@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Slideshow with Background Music</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #slideshow-container {
+            border-radius: 20px;
+            padding: 15px;
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+           
+        }
+
+        .mySlides {
+            display: none;
+            width: 500px;
+            height: 500px;
+        }
+
+        audio {
+            width: 20%;
+            margin-top: 20px;
+        }
+
+        #lyrics-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #startButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+      
+        #startButton{
+            font-size: 20px;
+            border: 5px;
+            border-color: red;
+            background-color: brown;
+            width: 100px;
+            border-radius: 20px;
+            color: beige;
+        }
+        #lyrics-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+       .kukku1{
+
+        margin: 0;
+       }
+    </style>
+</head>
+<body>
+    <center>
+
+        <div class="kukku1">
+            <h1>පිළියන්දල බෝඩරේ</h1>
+        </div>
+    <div id="slideshow-container" >
+        <!-- Add your image slides here -->
+        <div class="mySlides">
+            <img src="image1.png" alt="Image 1" width="500px" height="500px" >
+        </div>
+        <div class="mySlides">
+            <img src="image2.jpg" alt="Image 2"  width="500px" height="500px">
+        </div>
+        <div class="mySlides">
+            <img src="image3.jpeg" alt="Image 1"  width="500px" height="500px">
+        </div>
+        <div class="mySlides">
+            <img src="image4.jpeg" alt="Image 2"  width="500px" height="500px">
+        </div>
+
+
+        <!-- Add more slides as needed -->
+        <div id="lyrics-container">
+            <!-- Lyrics will be dynamically updated here -->
+           <p>
+           
+           </p> 
+        </div>
+
+        <!-- Background music -->
+        <audio id="backgroundAudio" controls>
+            <source src="your-song.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+       
+    
+        <!-- Start button -->
+        <div id="startButton" class="start" onclick="startSlideshow()">Start Slideshow</div>
+    </div>
+
+    <div class="kukku">
+        <h1>මම කුක්කු බිලින්ජා...</h1>
+    </div>
+    
+</center>
+
+    <script>
+        let slideIndex = 0;
+
+        function startSlideshow() {
+            document.getElementById('backgroundAudio').play();
+            showSlides();
+            document.getElementById('startButton').style.display = 'none';
+        }
+
+        function showSlides() {
+            let i;
+            const slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change slide every 2 seconds
+        }
+    </script>
+</body>
+</html>
